@@ -35,9 +35,9 @@ class Quagga extends UNIX {
       $cmd->add('ipv6');
     }
     if (match_ipv4($parameter, false)) {
-      $cmd->add('ipv4');
+      $cmd->add('ip');
     }
-    $cmd->add('bgp unicast', $parameter, '"');
+    $cmd->add('bgp', $parameter, '"');
 
     return array($cmd);
   }

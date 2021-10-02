@@ -95,7 +95,7 @@ abstract class UNIX extends Router {
                 (isset($hostname) ? $hostname : $parameter));
     }
 
-    // Add the source interface based on the IP address
+  /*  // Add the source interface based on the IP address
     if ($this->has_source_interface_id()) {
       if (match_ipv6($parameter) && $this->get_source_interface_id('ipv6')) {
         $cmd->add($this->global_config['tools']['traceroute_source_option'],
@@ -106,6 +106,7 @@ abstract class UNIX extends Router {
                   $this->get_source_interface_id('ipv4'));
       }
     }
+    */
 
     return array($cmd);
   }

@@ -77,7 +77,7 @@ $config = array(
     // Frontpage order you can use: routers, commands, parameter, buttons
     'order' => array('routers', 'commands', 'parameter', 'buttons'),
     // Number of routers to show on frontpage
-    'router_count' => 5,
+    'router_count' => 1,
     // Number of commands to show on frontpage (0 scales dynamically)
     'command_count' => 0
   ),
@@ -113,10 +113,10 @@ $config = array(
 // Google reCaptcha
   'recaptcha' => array(
     // Disabled by default
-    'enabled' => false,
+    'enabled' => true,
     'url' => 'https://www.google.com/recaptcha/api/siteverify',
-    'apikey' => null,
-    'secret' => null
+    'apikey' => '6Ld0H3scAAAAADe30eo-XwYzlatydFDPjETWX-Uc',
+    'secret' => '6Ld0H3scAAAAAB_TtDhqZoOHx_7YXheggwIWhz01'
   ),
 
   // Logs
@@ -162,9 +162,9 @@ $config = array(
     'traceroute6' => 'traceroute -6',
     // Options to be used when tracerouting from a UNIX host (case of BIRD,
     // Quagga, and others)
-    'traceroute_options' => '-A -q1 -N32 -w1 -m15',
+    'traceroute_options' => '-q1 -w2 -m15',
     // Source option to use when tracerouting
-    'traceroute_source_option' => '-s'
+    'traceroute_source_option' => ''
   ),
 
   // Documentation (must be HTML)
@@ -172,32 +172,32 @@ $config = array(
     // Documentation for the 'show route' query
     'bgp' => array(
       'command' => 'show route IP_ADDRESS',
-      'description' => 'Show the best routes to a given destination.',
-      'parameter' => 'The parameter must be a valid destination. Destination means an IPv4/IPv6 address or a subnet. Masks are also accepted as part of a valid IPv4/IPv6 address.<br />RFC1918 addresses, IPv6 starting with FD or FC, and IPv4 reserved ranges (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 and 224.0.0.0/4) may be refused.<br />Please note that some routers always need a mask to be given when looking for an IPv6 address.<br /><br />Example of valid arguments:<br /><ul><li>8.8.8.8</li><li>8.8.4.0/24</li><li>2001:db8:1337::42</li><li>2001:db8::/32</li>'
+      'description' => 'Muestra las mejores rutas del destino solicitado.',
+      'parameter' => 'EL parámetro debe ser un destino válido. Destino, se refiere a una dirección o subred IPv4/IPv6. Las máscaras también son aceptadas como una dirección IPv4/IPv6.<br />Direcciones RFC1918, IPv6 comenzando con FD o FC, e IPv4 con rangos reservados (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 y 224.0.0.0/4) pueden ser rechazados.<br />Tome en cuenta que algunos routers siempre necesitan recibir una máscara cuando se está buscando una dirección IPv6.<br /><br />Ejemplos de argumentos válidos:<br /><ul><li>8.8.8.8</li><li>8.8.4.0/24</li><li>2001:db8:1337::42</li><li>2001:db8::/32</li>'
     ),
     // Documentation for the 'as-path-regex' query
     'as-path-regex' => array(
       'command' => 'show route as-path-regex AS_PATH_REGEX',
-      'description' => 'Show the routes matching the given AS path regular expression.',
-      'parameter' => 'The parameter must be a valid AS path regular expression and must not contain any " characters (the input will be automatically quoted if needed).<br />Please note that these expressions can change depending on the router and its software.<br />OpenBGPD does not support regular expressions, but will search for the submitted AS number anywhere in the AS path.<br /><br />Here are some examples:<ul><li><strong>Juniper</strong> - ^AS1 AS2 .*$</li><li><strong>Cisco</strong> - ^AS1_AS2_</li><li><strong>BIRD</strong> - AS1 AS2 AS3 &hellip; ASZ</li><li><strong>OpenBGPD</strong> - AS1</li></ul><br />You may find some help with the following link:<br /><ul><li><a href="http://www.juniper.net/techpubs/en_US/junos13.3/topics/reference/command-summary/show-route-aspath-regex.html" title="Juniper Documentation">Juniper Documentation</a></li><li><a href="http://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/26634-bgp-toc.html#asregexp" title="Cisco Documentation">Cisco Documentation</a></li><li><a href="http://bird.network.cz/?get_doc&f=bird-5.html" title="BIRD Documentation">BIRD Documentation</a> (search for bgpmask)</li></ul>'
+      'description' => 'Muestra las rutas que coinciden con la expresión regular de un Sistema Autónomo dado.',
+      'parameter' => 'El parámetro debe ser una expresión regular de ruta de un Sistema Autónomo válido y no debe contener ningún carácter: ", (La entrada se citará automáticamente si es necesario).<br />Tome en cuenta que estas expresiones pueden cambiar según el enrutador y su software.<br />OpenBGPD no admite expresiones regulares, pero buscará el número de Sistema Autónomo enviado en cualquier lugar de la ruta del Sistema Autónomo.<br /><br />Ejemplos de argumentos válidos :<ul><li><strong>Juniper</strong> - ^AS1 AS2 .*$</li><li><strong>Cisco</strong> - ^AS1_AS2_</li><li><strong>BIRD</strong> - AS1 AS2 AS3 &hellip; ASZ</li><li><strong>OpenBGPD</strong> - AS1</li></ul><br />Puede encontrar ayuda en la siguiente documentación:<br /><ul><li><a href="http://www.juniper.net/techpubs/en_US/junos13.3/topics/reference/command-summary/show-route-aspath-regex.html" title="Juniper Documentation">Juniper Documentation</a></li><li><a href="http://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/26634-bgp-toc.html#asregexp" title="Cisco Documentation">Cisco Documentation</a></li><li><a href="http://bird.network.cz/?get_doc&f=bird-5.html" title="BIRD Documentation">BIRD Documentation</a> (search for bgpmask)</li></ul>'
     ),
     // Documentation for the 'as' query
     'as' => array(
       'command' => 'show route ^AS',
-      'description' => 'Show the routes received from a given neighboring AS number.',
-      'parameter' => 'The parameter must be a valid 16-bit or 32-bit autonomous system number.<br />Be careful, 32-bit ASN are not handled by old routers or old router softwares.<br />Unless specified, private ASN will be considered as invalid.<br /><br />Example of valid argument:<br /><ul><li>15169</li><li>29467</li></ul>'
+      'description' => 'Muestra las rutas recibidas de un número de un Sistema Autónomo vecino dado.',
+      'parameter' => 'El parámetro debe ser un número de sistema autónomo válido de 16 o 32 bits.<br /> Precaución: Los Números de Sistema Autónomo de 32 bits no son manejados por enrutadores antiguos o software de enrutadores antiguos .<br />A menos que se especifique, el Número de Sistema Autónomo privado se considerará no válido.<br /><br />Ejemplos de argumentos válidos:<br /><ul><li>15169</li><li>29467</li></ul>'
     ),
     // Documentation for the 'ping' query
     'ping' => array(
       'command' => 'ping IP_ADDRESS|HOSTNAME',
-      'description' => 'Send pings to the given destination.',
-      'parameter' => 'The parameter must be an IPv4/IPv6 address (without mask) or a hostname.<br />RFC1918 addresses, IPv6 starting with FD or FC, and IPv4 reserved ranges (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 and 224.0.0.0/4) may be refused.<br /><br />Example of valid arguments:<br /><ul><li>8.8.8.8</li><li>2001:db8:1337::42</li><li>example.com</li></ul>'
+      'description' => 'Envía pings al destino solicitado',
+      'parameter' => 'El parámetro debe ser una dirección IPv4/IPv (sin máscara) o un nombre de host.<br />Se pueden rechazar las direcciones RFC1918, IPv6 que comiencen con FD o FC, y rangos reservados de IPv4 (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 y 224.0.0.0/4).<br /><br />Ejemplos de argumentos válidos:<br /><ul><li>8.8.8.8</li><li>2001:db8:1337::42</li><li>example.com</li></ul>'
     ),
     // Documentation for the 'traceroute' query
     'traceroute' => array(
       'command' => 'traceroute IP_ADDRESS|HOSTNAME',
-      'description' => 'Display the path to a given destination.',
-      'parameter' => 'The parameter must be an IPv4/IPv6 address (without mask) or a hostname.<br />RFC1918 addresses, IPv6 starting with FD or FC, and IPv4 reserved ranges (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 and 224.0.0.0/4) may be refused.<br /><br />Example of valid arguments:<br /><ul><li>8.8.8.8</li><li>2001:db8:1337::42</li><li>example.com</li></ul>'
+      'description' => 'Muestra la ruta a un destino determinado.',
+      'parameter' => 'El parámetro debe ser una dirección IPv4/IPv (sin máscara) o un nombre de host.<br />Se pueden rechazar las direcciones RFC1918, IPv6 que comiencen con FD o FC, y rangos reservados de IPv4 (0.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24 y 224.0.0.0/4).<br /><br />Ejemplos de argumentos válidos:<br /><ul><li>8.8.8.8</li><li>2001:db8:1337::42</li><li>example.com</li></ul>'
     )
   ),
 

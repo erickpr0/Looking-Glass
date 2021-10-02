@@ -3,13 +3,15 @@ body {
   background-color: #FFFFFF;
 }
 .header_bar {
-  color:            #000000;
-  margin-top:       1em;
-  margin-bottom:    1em;
+  background-color: #ECECEC;
+  margin-bottom:    2em;
 }
 .footer_bar {
   color:            #000000;
   margin-top:       1em;
+  background-color: #ECECEC;
+  padding-bottom: 100px;
+  margin-top: 100px;
 }
 .origin {
   font-size:        0.7em;
@@ -48,6 +50,13 @@ a {
   text-decoration:  none;
 }
 a:hover {
-  color:            #000000;
+  color:#000000;
   text-decoration:  none;
 }
+
+.h1_t{
+  color: #2c0309;
+  font-family: 'Nanum Gothic', sans-serif;
+
+}
+
